@@ -1,34 +1,36 @@
-
 image: node:alpine
-
-stages:
+stage:
   - install
+  - lint-code
   - build
   - deploy
 
 cache:
-  key: test-vite
+  key: vite
   paths:
     - node_modules
 
-job_install:
+job_install: 
   stage: install
-  tags:
-   -  dockercicd1
+  tags: 
+    - vite
   script:
-    - npm install -g pnpm
-    - pnpm install
+    - npm install
 
 job_build:
   stage: build
-  tags:
-   -  dockercicd1
+  tags: 
+    - vite
   script:
     - npm run build
 
 job_deploy:
   stage: deploy
-  tags:
-   -  dockercicd1
+  image: docker
+  tags: 
+    - vite 
   script:
-    - echo 'start deploy'
+    - docker build -t viteimages .
+    - if [ $(docker ps -aq --filter name=myvite-container)];then docker rm -f myvite-container;fi
+    - docker run -d -p 80082:80 --name=myvite-container viteimages
+

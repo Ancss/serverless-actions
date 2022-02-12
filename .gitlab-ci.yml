@@ -1,4 +1,4 @@
-states:
+stages:
   - install
   - build
   - deploy

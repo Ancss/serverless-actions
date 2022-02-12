@@ -1,4 +1,19 @@
 job1:
-  # stage: build
+  stage: .pre
   script: 
-    - echo 'my ci/cd'
+    - echo 'my pre job1'
+
+job2:
+  stage: build
+  script: 
+    - echo 'my build job2'
+
+job3:
+  stage: test
+  script: 
+    - echo 'my test job3'
+
+job4:
+  stage: test
+  script: 
+    - echo 'my test stage job4'

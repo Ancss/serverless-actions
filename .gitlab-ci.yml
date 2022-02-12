@@ -6,18 +6,29 @@ stages:
   - build
   - deploy
 
+cache:
+  key: test-vite
+  paths:
+    - node_modules
+
 job_install:
   stage: install
+  tags:
+   -  dockercicd1
   script:
     - npm install -g pnpm
     - pnpm install
 
 job_build:
   stage: build
+  tags:
+   -  dockercicd1
   script:
     - npm run build
 
 job_deploy:
   stage: deploy
+  tags:
+   -  dockercicd1
   script:
     - echo 'start deploy'

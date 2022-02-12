@@ -1,19 +1,20 @@
-job1:
-  stage: .pre
-  script: 
-    - echo 'my pre job1'
+states:
+  - install
+  - build
+  - deploy
 
-job2:
+job_install:
+  stage: install
+  script:
+    - npm install -g pnpm
+    - pnpm install
+
+job_build:
   stage: build
-  script: 
-    - echo 'my build job2'
+  script:
+    - npm run build
 
-job3:
-  stage: test
-  script: 
-    - echo 'my test job3'
-
-job4:
-  stage: test
-  script: 
-    - echo 'my test stage job4'
+job_deploy:
+  stage: deploy
+  script:
+    - echo 'start deploy'

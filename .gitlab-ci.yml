@@ -32,5 +32,5 @@ job_deploy:
   script:
     - docker build -t viteimages .
     - if [ $(docker ps -aq --filter name=myvite-container)];then docker rm -f myvite-container;fi
-    - docker run -d -p 80082:80 --name=myvite-container viteimages
+    - docker run -d -p 80082:80 --name myvite-container viteimages
 

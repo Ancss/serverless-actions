@@ -1,0 +1,13 @@
+org: '1303253771'
+app: test-koa-name
+stage: dev
+component: layer
+name: test-koa-name-layer
+inputs:
+  name: test-koa-name-layer
+  region: ap-guangzhou
+  src:
+    src: ../node_modules
+    targetDir: /node_modules
+  runtimes:
+    - Nodejs12.16

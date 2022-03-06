@@ -1,8 +1,8 @@
 FROM node:latest as builder
 WORKDIR /app
-COPY package.json
+COPY package.json .
 RUN npm install --registry=http://registry.npm.taobao.org
-COPY . .
+# COPY . .
 RUN npm run build
 
 FROM nginx:latest

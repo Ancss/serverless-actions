@@ -7,7 +7,7 @@ const count = ref(10)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>{{ msg }} 哈哈哈</h1>
 
   <p>
     Recommended IDE setup:
